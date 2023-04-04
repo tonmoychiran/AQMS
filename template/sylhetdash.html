@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AQMS</title>
+  <!-- -------- animation css link------ -->
+  <link rel="stylesheet" href="{% static '/css/animate.css' %}">
+  <!-- --------- slider css link------ -->
+  <link rel="stylesheet" href="{% static '/css/tiny-slider.css' %}">
+  <!-- --------- font awesome css ------ -->
+  <link rel="stylesheet" href="{% static '/css/all.css' %}">
+  <!-- -------- venobox css ------- -->
+  <link rel="stylesheet" href="{% static '/css/venobox.css' %}" type="text/css" media="screen" />
+  <!-- ---- Bootstrap css--- -->
+  <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+  <!-- ----------css --------- -->
+  <link rel="stylesheet" href="{% static '/css/default.css' %}">
+  <!-- --- style css -->
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+  <link rel="stylesheet" href="{% static '/css/signin.css' %}">
+</head>
+
+<body>
+  <header>
+    <div class="navbar-area">
+      <!---- navbar star--->
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img class="image" src="{% static '/img/download/images/aqmslogo (2).png' %}" alt=""> AQMS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link active" data-scroll-nav="0" aria-current="page"
+                    href="{% url 'home' %}">Dashboard</a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="/assets/sign/sign_in.html">Log Out</a>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <section class="vh-130 my-5">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-10 col-xl-12">
+          <div class="card bg-success text-white aqColor" style="border: 1rem">
+            <div class="card-body p-5 text-center">
+              <div class="mb-md-2 mt-md-2 pb-1">
+                <p class="small text-dark mb-1 pb-lg-2">Sylhet</p>
+                <p class="small text-dark mb-1 pb-lg-2 aqval">AQI {{pmdata}}</p>
+              </div>
+              <div>
+                <p class="my-auto text-dark"> Status
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-12 col-md-8 col-lg-10 col-xl-12">
+          <div class="card bg-light text-dark" style="border: 1rem;">
+            <div class="card-body text-center">
+              <div class="mb-md-0 mt-md-0 pb-1">
+                <p class="small text-info mb-0 pb-lg-1">Overview</p>
+                <p class="my-auto text-dark">What is the current air quality?</p>
+              </div>
+              <div class="row p-3 bg-warning" style="border: 1px solid;">
+                <div class="col">
+                  <p class="ms-auto text-dark">Air Pollution Level</p>
+                </div>
+                <div class="col">
+                  <p class="ms-auto text-dark">Air Quality Index</p>
+                </div>
+                <div class="col">
+                  <p class="ms-auto text-dark">Main Pollutant</p>
+                </div>
+              </div>
+              <div class="row p-3">
+                <div class="col">
+                  <p class="ms-auto text-dark"></p>
+                </div>
+                <div class="col">
+                  <p class="ms-auto text-dark">{{pmdata}}</p>
+                </div>
+                <div class="col">
+                  <p class="ms-auto text-dark">PM 2.5</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="vh-100 my-5">
+    <div class="container py-5 h-100">
+      <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-info fw-normal">{{linechart|safe}}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-info fw-normal">{{boxplotchart|safe}}</h4>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 grid-margin grid-margin-lg-0 stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-info fw-normal">{{barchart|safe}}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 grid-margin grid-margin-lg-0 stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-info fw-normal">{{stationwiseboxplot|safe}}</h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 grid-margin grid-margin-lg-0 stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title text-info fw-normal">{{organization|safe}}</h4>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 grid-margin grid-margin-lg-0 stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title text-info fw-normal">{{orgscatt|safe}}</h4>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+
+  <!-- ---- jquery Js ---- -->
+  <script src="{% static '/js/jquery-1.12.4.min.js' %}"></script>
+  <!-- -------- venobox js ------ -->
+  <script type="text/javascript" src="{% static '/js/venobox.min.js' %}"></script>
+  <!-- ---------- wow js ---------- -->
+  <script src="{% static '/js/wow.min.js' %}"></script>
+  <!-- ---------- tiny slider js --------- -->
+  <script src="{% static '/js/tiny-slider.js' %}"></script>
+  <!-- ---------- scrollit js ---------- -->
+  <script src="{% static '/js/scrollIt.min.js' %}"></script>
+  <!-- -------- font awsome js --------- -->
+  <script src="{% static '/js/all.js' %}"></script>
+  <!-- ---- Bootstrap Js ---- -->
+  <script src="{% static '/js/bootstrap.min.js' %}"></script>
+  <!-- ---- main js --- -->
+  <script src="{% static '/js/main.js' %}"></script>
+  <script src="{% static '/js/colorchng.js' %}"></script>
+</body>
+
+</html>
